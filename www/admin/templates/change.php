@@ -1,27 +1,23 @@
-<?php $title = 'Adminka'; ?>
+<?php $title = 'Change tests'; ?>
 <br><br><br><br><br>
 <form >
     <div style="position:absolute; top:10px; right:10px; width:80px; text-align:center;">
         <button type="button">
-            <a href="/index.php?page=questions">Главная</a>
+            <a href="/admin/index.php?page=adminka">Назад</a>
         </button>
     </div>
-</form>
-<form >
     <center>
         <button type="button">
             <a href="/admin/index.php?page=delete">Удалить вопрос\ответ</a>
         </button>
     </center>
-</form>
-<form >
+    <br>
     <center>
         <button type="button">
             <a href="/admin/index.php?page=questions_add">Добавить вопросы</a>
         </button>
     </center>
-</form>
-<form >
+    <br>
     <center>
         <button type="button">
             <a href="/admin/index.php?page=answers_add">Добавить ответы</a>

@@ -7,12 +7,15 @@
         <br>
         <input type="text" size="52" name="answer_add">
         <select name="lang">';
-            <?php $qr_result_questions = mysql_query("select * from questions"); ?>
-            <?php $num=0; ?>
-            <?php $id=0; ?>
+            lang();
+            <?php while($questions = mysql_fetch_array($qr_result_questions)):?>
+                <option><?php echo $lang; ?></option>
+            <?php endwhile;?>
+
+            <?php /*<?php $qr_result_questions = mysql_query("select * from questions"); ?>
             <?php while($questions = mysql_fetch_array($qr_result_questions)):?>
                 <?php echo '<option>'. $questions['id'] .'</option>' ?>
-            <?php endwhile;?>
+            <?php endwhile;?>*/ ?>
         </select>
         <br>
         <input type="checkbox" name="correct" value="1">
@@ -22,38 +25,32 @@
     <input type="reset" value="Очистить">
     </form>
 
-    <?php if($_POST["answer_add"] != "")
-    {
-        $answer = $_POST["answer_add"];
-        $post = $_POST["lang"];
-        $qr_result_answers = mysql_query("select * from answers");
-        $cor=0;
-        while ($answers = mysql_fetch_array($qr_result_answers))
-        {
-            if($answers['correct'] == 1 && $answers['question_id']==$post)
-            {
-                $cor++;
-            }
-        }
-        if ($_POST["correct"] == 1 && $cor == 0)
-        {
-            $correct = 1;
-        }elseif($_POST["correct"] == 1){
-            echo 'Этот вариант ответа уже содержит в себе верный ответ!'.'<br>';
-            echo 'Вариант ответа был сохранён как неверный.'.'<br>';
-        }
-        $result_an = mysql_query("INSERT INTO answers (answer, question_id, correct) VALUES('$answer', '$post', '$correct') ");
-        if ($result_an == 'true')
-        {
-            echo "БД 'answers' была обновлена";
-        } else {
-            echo "БД 'answers' НЕ была обновлена";
-        }
-    }
-    if($_POST["submit"] == "Сохранить" && $_POST["answer_add"] == "")
-    {
-        echo 'Поле не должно быть пустым!';
-    }?>
+    <?php if($_POST["answer_add"] != ""): ?>
+        <?php $answer = $_POST["answer_add"];?>
+        <?php $post = $_POST["lang"];?>
+        <?php $qr_result_answers = mysql_query("select * from answers");?>
+        <?php $cor=0;?>
+        <?php while ($answers = mysql_fetch_array($qr_result_answers)):?>
+            <?php if($answers['correct'] == 1 && $answers['question_id']==$post):?>
+                <?php $cor++;?>
+            <?php endif?>
+        <?php endwhile?>
+        <?php if ($_POST["correct"] == 1 && $cor == 0):?>
+            <?php $correct = 1;?>
+        <?php endif?>
+        <?php if($_POST["correct"] == 1):?>
+            Этот вариант ответа уже содержит в себе верный ответ!
+            <br>
+            Вариант ответа был сохранён как неверный
+            <br>
+        <?php endif?>
+        <?php $result_an = mysql_query("INSERT INTO answers (answer, question_id, correct) VALUES('$answer', '$post', '$correct') "); ?>
+        <?php if ($result_an == 'true'): ?>
+            БД 'answers' была обновлена
+        <?php else:?>
+            "БД 'answers' НЕ была обновлена
+        <?php endif?>
+    <?php endif?>
 
     <br><br>
     <form >

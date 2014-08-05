@@ -29,6 +29,12 @@ if (isAuthorized()) {
         case "delete":
             delete();
             break;
+        case "adminka":
+            adminka();
+            break;
+        case "user_change":
+            user_change();
+            break;
 
         default:
             echo '<html><body><h1>Page Not Found</h1></body></html>';

@@ -24,7 +24,7 @@
         <form >
             <div style="position:absolute; top:10px; right:10px; width:80px; text-align:center;">
                 <button type="button">
-                    <a href="/admin/index.php?page=change">Админка</a>
+                    <a href="/admin/index.php?page=adminka">Админка</a>
                 </button>
             </div>
         </form>
@@ -50,6 +50,11 @@
             <div style="position:absolute; top:10px; right:10px; width:80px; text-align:center;">
                 <button type="button">
                     <a href="/index.php?page=login">Войти</a>
+                </button>
+            </div>
+            <div style="position:absolute; top:40px; right:20px; width:80px; text-align:center;">
+                <button type="button">
+                    <a href="/index.php?page=register">Регистрация</a>
                 </button>
             </div>
         </form>

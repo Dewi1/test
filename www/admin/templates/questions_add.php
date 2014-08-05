@@ -7,19 +7,22 @@
             <br>
             <input type="text" size="60" name="title_add">
         </p>
-    <input type="submit" value="Сохранить" name="submit">
-    <input type="reset" value="Очистить">
+        <input type="submit" value="Сохранить" name="submit">
+        <input type="reset" value="Очистить">
     </form>
 
     <?php if($_POST["title_add"] != ""):?>
         <?php $title = $_POST["title_add"]; ?>
-        <?php $result_tit = mysql_query("INSERT INTO questions (title) VALUES('$title')"); ?>
+        <?php $result_tit = add_question($title); ?>
 
         <?php if($result_tit == 'true'):?>
             БД 'questions' была обновлена
         <?php else:?>
             БД 'questions' НЕ была обновлена
         <?php endif?>
+        <?php if($title == "true"): ?>
+
+        <?php endif ?>
     <?php endif?>
     <?php if($_POST["submit"] == "Сохранить" && $_POST["title_add"] == ""):?>
         Поле не должно быть пустым!

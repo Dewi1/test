@@ -25,6 +25,9 @@ switch ($page) {
     case "login":
         login();
         break;
+    case "register":
+        register();
+        break;
 
     default:
         echo '<html><body><h1>Page Not Found</h1></body></html>';

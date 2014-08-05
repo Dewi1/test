@@ -25,3 +25,15 @@ function delete() {
     $content = ob_get_clean();
     include 'templates/layout.php';
 }
+function adminka() {
+    ob_start();
+    include 'templates/adminka.php';
+    $content = ob_get_clean();
+    include 'templates/layout.php';
+}
+function user_change() {
+    ob_start();
+    include 'templates/user_change.php';
+    $content = ob_get_clean();
+    include 'templates/layout.php';
+}
