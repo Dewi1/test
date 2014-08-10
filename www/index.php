@@ -5,8 +5,10 @@ require 'main_site/model/database.php';
 
 // Загружаем и инициализируем глобальные библиотеки
 require 'main_site/model/questions.php';
-require 'main_site/controllers.php';
 require 'main_site/model/functions.php';
+require 'main_site/model/authorization.php';
+require 'main_site/model/registration.php';
+require 'main_site/controllers.php';
 require 'admin/controllers.php';
 
 // Внутренняя маршрутизация

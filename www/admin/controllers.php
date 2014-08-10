@@ -12,7 +12,7 @@ function questions_add() {
     include 'templates/layout.php';
 }
 function answers_add() {
-    $questions = get_all_questions_admin();
+    $lang = lang();
     ob_start();
     include 'templates/answers_add.php';
     $content = ob_get_clean();

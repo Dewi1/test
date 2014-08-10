@@ -4,8 +4,8 @@ define('DS', DIRECTORY_SEPARATOR);
 require 'model/database.php';
 
 // Загружаем и инициализируем глобальные библиотеки
-require 'model/questions.php';
 require 'controllers.php';
+require 'model/questions.php';
 require 'model/changes.php';
 require 'model/functions.php';
 

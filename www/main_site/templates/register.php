@@ -16,8 +16,7 @@
 <?php if($_POST["login"] != "" && $_POST["password"] != ""):?>
     <?php $login = $_POST["login"]; ?>
     <?php $password = $_POST["password"]; ?>
-    <?php $login_add = mysql_query("INSERT INTO users (login) VALUES('$login')"); ?>
-    <?php $password_add = mysql_query("INSERT INTO users (password) VALUES('$password')"); ?>
+    <?php $register = registration($login, $password); ?>
 <?php endif?>
 
 <center>
@@ -27,6 +26,11 @@
     <br>
     <?php if($_POST["submit"] == "Сохранить" && $_POST["password"] == ""):?>
         Поле "Создайте ваш пароль" не должно быть пустым!
+    <?php endif?>
+</center>
+<center>
+    <?php if($_POST["submit"] == "Сохранить" && $_POST["password"] != "" && $_POST["login"] != ""):?>
+        Поздравляем! Вы успешно зарегестрировались на нашем сайте!
     <?php endif?>
 </center>
 

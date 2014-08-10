@@ -19,6 +19,7 @@
         <?endif?>
     </form>
 
+    <?php ?>
     <?php
         $myConnect = open_database_connection();
 
