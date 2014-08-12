@@ -29,7 +29,7 @@
         <?php if ($_POST["correct"] == 1 && $cor == 0):?>
             <?php $correct = 1;?>
         <?php endif?>
-        <?php if($_POST["correct"] == 1):?>
+        <?php if($_POST["correct"] == 1 && $cor == true):?>
             Этот вариант ответа уже содержит в себе верный ответ!
             <br>
             Вариант ответа был сохранён как неверный
