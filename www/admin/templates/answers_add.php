@@ -39,7 +39,7 @@
         <?php if ($result_an == 'true'): ?>
             БД 'answers' была обновлена
         <?php else:?>
-            "БД 'answers' НЕ была обновлена
+            БД 'answers' НЕ была обновлена
         <?php endif?>
     <?php endif?>
 

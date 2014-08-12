@@ -34,75 +34,38 @@
     </center>
 </form>
 <center>
-    <?php if($_POST["ask_1"] == "На все ли вопросы есть варианты ответов?")
-    {
-        $qr_result_questions = mysql_query("select * from questions");  //выбираем все значения из таблицы
-        $i=0;$array1 = array();
-        $j=0;$array2 = array();
-        while ($questions = mysql_fetch_array($qr_result_questions))
-        {
-            $i++;
-            $array1[$i] = $questions['id'];
-
-            $qr_result_answers = mysql_query("select * from answers");
-            while ($answers = mysql_fetch_array($qr_result_answers))
-            {
-                    $j++;
-                    $array2[$j] = $answers['question_id'];
-            }
-        }
-        $array3 = array_diff($array1, $array2);
-        $kol=0;
-        for ($k=0; $k<$j;$k++)
-        {
-            if($array3[$k]>0)
-            {
-                $results = mysql_query("SELECT title FROM questions WHERE id = '$array3[$k]'");
-                $rs = mysql_fetch_array($results);
-                $s = $rs['title'];
-                echo 'Вопрос "'. $s .'" c id:"'.$array3[$k].'" не содержит вариантов ответов.<br>';
-                $kol++;
-            }
-        }
-        if($kol == null)
-        {
-            echo 'НА ВСЕ';
-        }
-    }
-    if($_POST["ask_2"] == "У всех ли вопросов есть правильный ответ?")
-    {
-        $qr_result_questions = mysql_query("select * from questions");  //выбираем все значения из таблицы
-        $i=0;$array1 = array();
-        $j=0;$array2 = array();
-        while ($questions = mysql_fetch_array($qr_result_questions))
-        {
-            $i++;
-            $array1[$i] = $questions['id'];
-
-            $qr_result_answers = mysql_query("select * from answers WHERE correct = '1'");
-            while ($answers = mysql_fetch_array($qr_result_answers))
-            {
-                $j++;
-                $array2[$j] = $answers['question_id'];
-            }
-        }
-        $array3 = array_diff($array1, $array2);
-        $kol_correct=0;
-        for ($l=0; $l<$j;$l++)
-        {
-            //var_dump('$correct');
-            if($array3[$l]>0 && '$correct' == 0)
-            {
-                $results = mysql_query("SELECT title FROM questions WHERE id = '$array3[$l]'");
-                $rs = mysql_fetch_array($results);
-                $s = $rs['title'];
-                echo 'Вопрос "'. $s .'" c id:"'.$array3[$l].'" не содержит правильного ответа.<br>';
-                $kol_correct++;
-            }
-        }
-        if($kol_correct == null)
-        {
-            echo 'У ВСЕХ';
-        }
-    } ?>
+    <?php if($_POST["ask_1"] == "На все ли вопросы есть варианты ответов?"):?>
+        <?php $array3 = check_answer();?>
+        <?php $j=check_j();?>
+        <?php $kol=0;?>
+        <?php for ($k=0; $k<$j;$k++):?>
+            <?php if($array3[$k]>0):?>
+                <?php $results = check_title($array3, $k);?>
+                <?php $rs = mysql_fetch_array($results);?>
+                <?php $s = $rs['title'];?>
+                <?php echo 'Вопрос "'. $s .'" c id:"'.$array3[$k].'" не содержит вариантов ответов.<br>';?>
+                <?php  $kol++;?>
+            <?php endif?>
+        <?php endfor?>
+        <?php if($kol == null):?>
+            НА ВСЕ
+        <?php endif?>
+    <?php endif?>
+    <?php if($_POST["ask_2"] == "У всех ли вопросов есть правильный ответ?"):?>
+        <?php $array3 = check_answer_correct();?>
+        <?php $j=check_j();?>
+        <?php $kol_correct=0;?>
+        <?php for ($l=0; $l<$j;$l++):?>
+            <?php if($array3[$l]>0 && '$correct' == 0):?>
+                <?php $results = check_title_correct($array3, $l);?>
+                <?php $rs = mysql_fetch_array($results);?>
+                <?php $s = $rs['title'];?>
+                <?php echo 'Вопрос "'. $s .'" c id:"'.$array3[$l].'" не содержит правильного ответа.<br>';?>
+                <?php $kol_correct++;?>
+            <?php endif?>
+        <?php endfor?>
+        <?php if($kol_correct == null):?>
+            У ВСЕХ
+        <?php endif?>
+    <?php endif?>
 </center>
