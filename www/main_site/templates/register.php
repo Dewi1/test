@@ -20,19 +20,44 @@
         <input type="text" name="password" style="width:140px; text-align:center;">*<br>
         <input type="text" name="email" style="width:140px; text-align:center;">*<br>
         <input type="text" name="name" style="width:140px; text-align:center;"><br>
-        <select name="day">';
-            <option><?php  ?></option>
+        <select name="day">
+            <?php $i = 1;?>
+            <?php while ($i <= 31):?>
+                <option value="<?php echo $i;?>"><?php echo $i;?></option>
+                <?php $i++;?>
+            <?php endwhile?>
         </select>
         <select name="month">';
-            <option><?php  ?></option>
+            <?php $month_add = array(
+            "Январь",
+            "Февраль",
+            "Март",
+            "Апрель",
+            "Май",
+            "Июнь",
+            "Июль",
+            "Август",
+            "Сентябрь",
+            "Октябрь",
+            "Ноябрь",
+            "Декабрь"
+            );?>
+            <?php foreach ($month_add as $m):?>
+                <option value="<?php echo $m;?>"><?php echo $m;?></option>
+            <?php endforeach?>
         </select>
-        <select name="yer">';
-            <option><?php  ?></option>
+        <select name="year">';
+            <?php $j = 2014;?>
+            <?php while ($j >= 1920):?>
+                <?php $j--;?>
+                <option value="<?php echo $j;?>"> <?php echo $j;?></option>
+            <?php endwhile?>
         </select><br>
         <select name="sex">
-            <option><?php  ?></option>
+            <option name="sex_male" value="male">Мужской</option>
+            <option name="sex_female" value="female">Женский</option>
         </select><br>
-        <input type="text" name="about" style="width:140px; text-align:center;">
+        <textarea name="about" size="50" rows="3" cols="22"></textarea>
     </div>
     <center>
         <br><br><br><br><br><br><br><br>
@@ -40,13 +65,24 @@
     </center>
 </form>
 
+<?php if($_POST["sex"]=="male"):?>
+    <?php $sex = "male"?>
+<?php endif?>
+<?php if($_POST["sex"]=="female"):?>
+    <?php $sex = "female"?>
+<?php endif?>
 <?php if($_POST["login"] != "" && $_POST["password"] != "" && $_POST["email"] != ""):?>
     <?php $login = $_POST["login"]; ?>
     <?php $password = $_POST["password"]; ?>
     <?php $name = $_POST["name"]; ?>
     <?php $email = $_POST["email"]; ?>
     <?php $about = $_POST["about"]; ?>
-    <?php $register = registration($login, $password, $name, $email, $about); ?>
+    <?php $month_word = $_POST["month"];?>
+    <?php $month = month($month_word);?>
+    <?php $day = $_POST["day"];?>
+    <?php $year = $_POST["year"];?>
+    <?php $date = date('Y-m-d', mktime(0, 0, 0, $month, $day, $year));?>
+    <?php $register = registration($login, $password, $name, $email, $about, $sex, $date); ?>
 <?php endif?>
 
 <center>

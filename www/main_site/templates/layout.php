@@ -12,6 +12,9 @@
             li {
                 list-style-type: none; /* Убираем маркеры */
             }
+            textarea {
+                resize: none; /* Запрещаем изменять размер */
+            }
         </style>
     </head>
     <body>
