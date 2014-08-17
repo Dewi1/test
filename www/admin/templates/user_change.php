@@ -8,19 +8,19 @@
     </div>
     <center>
         <button type="button">
-            <a href="/admin/index.php?page=user_change">Удаление пользователей</a>
+            <a href="/admin/index.php?page=user_delete">Удаление пользователей</a>
         </button>
     </center>
     <br>
     <center>
         <button type="button">
-            <a href="/admin/index.php?page=user_change">Создание пользователей</a>
+            <a href="/admin/index.php?page=user_add">Создание пользователей</a>
         </button>
     </center>
     <br>
     <center>
         <button type="button">
-            <a href="/admin/index.php?page=user_change">Редактирование пользователей</a>
+            <a href="/admin/index.php?page=user_editing">Редактирование пользователей</a>
         </button>
     </center>
 </form>

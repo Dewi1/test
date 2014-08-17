@@ -37,3 +37,30 @@ function user_change() {
     $content = ob_get_clean();
     include 'templates/layout.php';
 }
+function user_add() {
+    ob_start();
+    include 'templates/user_add.php';
+    $content = ob_get_clean();
+    include 'templates/layout.php';
+}
+function user_editing() {
+    $users = users();
+    ob_start();
+    include 'templates/user_editing.php';
+    $content = ob_get_clean();
+    include 'templates/layout.php';
+}
+function editing() {
+    $users = users();
+    ob_start();
+    include 'templates/editing.php';
+    $content = ob_get_clean();
+    include 'templates/layout.php';
+}
+function user_delete() {
+    $users = users();
+    ob_start();
+    include 'templates/user_delete.php';
+    $content = ob_get_clean();
+    include 'templates/layout.php';
+}

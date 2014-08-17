@@ -5,8 +5,8 @@ require 'model/database.php';
 
 // Загружаем и инициализируем глобальные библиотеки
 require 'controllers.php';
-require 'model/questions.php';
 require 'model/changes.php';
+require 'model/user_changes.php';
 require 'model/functions.php';
 
 // Внутренняя маршрутизация
@@ -34,6 +34,18 @@ if (isAuthorized()) {
             break;
         case "user_change":
             user_change();
+            break;
+        case "user_add":
+            user_add();
+            break;
+        case "user_editing":
+            user_editing();
+            break;
+        case "editing":
+            editing();
+            break;
+        case "user_delete":
+            user_delete();
             break;
 
         default:

@@ -1,9 +1,9 @@
-<?php session_start(); $title = "Registration"; ?>
+<?php session_start(); $title = "Add user"; ?>
 
-<form method='POST' action='/index.php?page=register'>
+<form method='POST' action='/admin/index.php?page=user_add'>
     <center>
         <br>
-        <h1>Регистрация</h1>
+        <h2>Добавить пользователя:</h2>
         <br>
     </center>
     <div style="position:absolute; top:170px; left:540px; width:600px; text-align:left;">
@@ -13,7 +13,7 @@
         Имя:<br>
         Возраст:<br>
         Пол:<br>
-        О себе:
+        О польз.:
     </div>
     <div style="position:absolute; top:170px; left:700px; width:600px; text-align:left;">
         <input type="text" name="login" style="width:140px; text-align:center;">*<br>
@@ -29,18 +29,18 @@
         </select>
         <select name="month">';
             <?php $month_add = array(
-            "Январь",
-            "Февраль",
-            "Март",
-            "Апрель",
-            "Май",
-            "Июнь",
-            "Июль",
-            "Август",
-            "Сентябрь",
-            "Октябрь",
-            "Ноябрь",
-            "Декабрь"
+                "Январь",
+                "Февраль",
+                "Март",
+                "Апрель",
+                "Май",
+                "Июнь",
+                "Июль",
+                "Август",
+                "Сентябрь",
+                "Октябрь",
+                "Ноябрь",
+                "Декабрь"
             );?>
             <?php foreach ($month_add as $m):?>
                 <option value="<?php echo $m;?>"><?php echo $m;?></option>
@@ -60,7 +60,7 @@
         <textarea name="about" size="50" rows="3" cols="22"></textarea>
     </div>
     <center>
-        <br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br>
         <input type="submit" name="submit" value="Сохранить" style="width:80px; text-align:center;">
     </center>
 </form>
@@ -82,7 +82,7 @@
     <?php $day = $_POST["day"];?>
     <?php $year = $_POST["year"];?>
     <?php $date = date('Y-m-d', mktime(0, 0, 0, $month, $day, $year));?>
-    <?php $register = registration($login, $password, $name, $email, $about, $sex, $date); ?>
+    <?php $user_add = add_user($login, $password, $name, $email, $about, $sex, $date); ?>
 <?php endif?>
 
 <center>
@@ -100,14 +100,14 @@
 </center>
 <center>
     <?php if($_POST["submit"] == "Сохранить" && $_POST["password"] != "" && $_POST["login"] != "" && $_POST["email"] != ""):?>
-        Поздравляем! Вы успешно зарегестрировались на нашем сайте!
+        Пользователь успешно добавлен.
     <?php endif?>
 </center>
 
 <form >
-    <div style="position:absolute; top:10px; left:10px; width:120px; text-align:center;">
+    <div style="position:absolute; top:10px; right:10px; width:80px; text-align:center;">
         <button type="button">
-            <a href="/index.php?page=questions">На главную</a>
+            <a href="/admin/index.php?page=user_change">Назад</a>
         </button>
     </div>
 </form>
