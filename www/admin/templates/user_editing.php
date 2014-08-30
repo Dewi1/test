@@ -1,13 +1,12 @@
 <?php session_start(); $title = "Edit user"; ?>
 
-<form action="/admin/index.php?page=editing" method="post">
-    <?php $k=0;?>
+<form method="post" action="/admin/index.php?page=editing">
     <?php foreach ($users as $user):?>
-        <?php $k++;?>
         <br>
-        <input type="submit" name="user_<?php echo $k; ?>" value="Редактировать">
+        <input type="submit" name="<?php echo $user['id'];?>" value="Редактировать">
         <table border="1">
             <tr>
+                <th>ID</th>
                 <th>Имя</th>
                 <th>Логин</th>
                 <th>Пароль</th>
@@ -17,6 +16,7 @@
                 <th>О пользователе</th>
             </tr>
             <tr>
+                <td><?php echo $user['id'];?></td>
                 <td><?php echo $user['name'];?></td>
                 <td><?php echo $user['login'];?></td>
                 <td><?php echo $user['password'];?></td>
@@ -26,9 +26,6 @@
                 <td><?php echo $user['about'];?></td>
             </tr>
         </table>
-        <?php if ($_POST['user_'.$k] == "Редактировать"):?>
-            <?php $user_id =  $user['id'];?>
-        <?php endif?>
     <?php endforeach?>
     <br><br>
     <div style="position:absolute; top:10px; right:10px; width:80px; text-align:center;">
